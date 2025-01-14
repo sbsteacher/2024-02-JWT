@@ -14,6 +14,7 @@ public class JwtConst {
     private final String issuer;
     private final String secret;
     private final String headerSchemaName;
+    private final String claimKey;
     private final String tokenName;
     private final String tokenType;
     private final long accessTokenExpiry;
