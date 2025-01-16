@@ -1,5 +1,6 @@
 package com.green.jwt.user;
 
+import com.green.jwt.user.model.UserSignInReq;
 import com.green.jwt.user.model.UserSignUpReq;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,13 @@ public class UserController {
         log.info("Sign up request: {}", req);
         userService.signUp(req);
         return req.getId();
+    }
+
+    @PostMapping("sign-in")
+    public long signIn(@RequestBody UserSignInReq req) {
+        log.info("Sign in request: {}", req);
+
+        return 1;
     }
 
 }
