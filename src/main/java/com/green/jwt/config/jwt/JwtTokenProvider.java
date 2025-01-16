@@ -2,6 +2,7 @@ package com.green.jwt.config.jwt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.green.jwt.config.JwtConst;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -58,6 +59,7 @@ public class JwtTokenProvider {
         //객체 자체를 JWT에 담고 싶어서 객체를 직렬화
         //jwtUser에 담고있는 데이터를 JSON형태의 문자열로 변환
         try {
+            //objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
             return objectMapper.writeValueAsString(jwtUser);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

@@ -1,5 +1,7 @@
 package com.green.jwt.user;
 
+import com.green.jwt.config.CookieUtils;
+import com.green.jwt.config.JwtConst;
 import com.green.jwt.config.jwt.JwtTokenProvider;
 import com.green.jwt.config.jwt.JwtUser;
 import com.green.jwt.user.model.UserSelOne;
@@ -27,6 +29,8 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final TransactionTemplate transactionTemplate;
     private final JwtTokenProvider jwtTokenProvider;
+    private final CookieUtils cookieUtils;
+    private final JwtConst jwtConst;
 
     public void signUp(UserSignUpReq req) {
         String hashedPw = passwordEncoder.encode(req.getPw());
@@ -54,6 +58,7 @@ public class UserService {
         String refreshToken = jwtTokenProvider.generateRefreshToken(jwtUser);
 
         //RT를 쿠키에 담는다.
+        cookieUtils.setCookie(response, jwtConst.getRefreshTokenCookieName(), refreshToken, jwtConst.getRefreshTokenCookieExpiry());
 
         return UserSignInRes.builder()
                 .accessToken(accessToken)

@@ -1,5 +1,7 @@
 package com.green.jwt.config.jwt;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,7 @@ public class JwtUser implements UserDetails  {
 
     //<? super GrantedAuthority>는 지정 타입이 꼭  GrantedAuthority포함, GrantedAuthority의 부모 객체만 가능하도록 제한을 거는 것
 
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        List<GrantedAuthority> authorities = new ArrayList<>(roles.size());
 //        for(String role : roles) {
@@ -66,13 +69,41 @@ public class JwtUser implements UserDetails  {
 
 
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return null;
     }
 
+    @JsonIgnore
     @Override
     public String getUsername() {
         return "";
     }
+
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
+
+
 }

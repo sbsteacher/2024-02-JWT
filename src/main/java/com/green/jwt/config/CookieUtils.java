@@ -15,10 +15,12 @@ public class CookieUtils {
     //Req header에서 내가 원하는 쿠키를 찾는 메소드
     public Cookie getCookie(HttpServletRequest req, String name) {
         //Optional.ofNullable 메소드는 null을 가질 수 있는 옵셔널을 생성
-        Optional<Cookie[]> optCookie = Optional.ofNullable(req.getCookies());
-        return Arrays.stream(optCookie.orElseThrow(() -> new RuntimeException("Cookie not found")))
-                 .filter(item -> item.getName().equals(name))
-                 .findFirst()
+
+        return Arrays.stream(Optional.ofNullable(req.getCookies())
+                                     .orElseThrow(() -> new RuntimeException("Cookie not found"))
+                 ) //Stream<Cookie[]> 생성
+                 .filter(item -> item.getName().equals(name)) //필터 조건에 맞는 Stream을 리턴 (중간연산)
+                 .findFirst() //첫번째 아이템 선택해서 Optional로 리턴 (최종연산)
                  .orElseThrow(() -> new RuntimeException("Cookie not found"));
     }
 
