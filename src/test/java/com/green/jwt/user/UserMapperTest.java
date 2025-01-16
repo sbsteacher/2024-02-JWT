@@ -19,8 +19,10 @@ class UserMapperTest {
 
     @Test
     void selUserWithRoles() {
-        UserSignInReq req = new UserSignInReq("dd2d@naver.com", "");
-        UserSelOne userSelOne = userMapper.selUserWithRoles(req);
+        UserSignInReq req = new UserSignInReq("d333d2d@naver.com", "");
+        UserSelOne userSelOne = userMapper.selUserWithRoles(req).orElseThrow(() -> {
+            throw new RuntimeException("아이디를 확인해 주세요.");
+        });
         System.out.println(userSelOne);
     }
 }
