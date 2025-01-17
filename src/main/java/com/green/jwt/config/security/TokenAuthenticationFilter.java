@@ -26,8 +26,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         String token = jwtTokenProvider.resolveToken(request);
         if (token != null) {
             try {
-                Authentication authentication = jwtTokenProvider.getAuthentication(token);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                SecurityContextHolder.getContext().setAuthentication(jwtTokenProvider.getAuthentication(token));
             } catch (Exception e) {
                 throw new RuntimeException("토큰 만료");
             }

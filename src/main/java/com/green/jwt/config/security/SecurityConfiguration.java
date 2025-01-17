@@ -29,9 +29,12 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable()) //SSR(Server Side Rendering)이 아니다. 보안관련 SSR 이 아니면 보안이슈가 없기 때문에 기능을 끈다.
                 .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/api/admin", "/api/mentor", "/api/admin-mentor", "/api/user").authenticated()
+                                req.requestMatchers("/api/admin").hasRole("ADMIN")
+                                   .requestMatchers("/api/mentor").hasRole("MENTOR")
+                                   .requestMatchers("/api/admin-mentor").hasAnyRole("ADMIN", "MENTOR")
+                                   .requestMatchers("/api/admin", "/api/mentor", "/api/admin-mentor", "/api/user").authenticated()
 
-                           .anyRequest().permitAll()
+                                   .anyRequest().permitAll()
                 )
                 .build();
     }

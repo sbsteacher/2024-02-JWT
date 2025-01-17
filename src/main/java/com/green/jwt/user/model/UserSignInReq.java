@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class UserSignInReq {
-    @Schema(title = "아이디", example = "dd2d@naver.com", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(title = "아이디", example = "ddd2@naver.com", requiredMode = Schema.RequiredMode.REQUIRED)
     private String email;
 
     @Schema(title = "비밀번호", example = "1212", requiredMode = Schema.RequiredMode.REQUIRED)
