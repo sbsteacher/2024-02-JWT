@@ -2,7 +2,7 @@ package com.green.jwt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.green.jwt.config.JwtConst;
+import com.green.jwt.config.constant.JwtConst;
 import com.green.jwt.config.jwt.JwtUser;
 import com.green.jwt.config.jwt.UserRole;
 import org.junit.jupiter.api.Test;

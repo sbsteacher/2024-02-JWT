@@ -1,7 +1,7 @@
 package com.green.jwt.user;
 
 import com.green.jwt.config.CookieUtils;
-import com.green.jwt.config.JwtConst;
+import com.green.jwt.config.constant.JwtConst;
 import com.green.jwt.config.jwt.JwtTokenProvider;
 import com.green.jwt.config.jwt.JwtUser;
 import com.green.jwt.user.model.UserSelOne;
@@ -13,12 +13,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionManager;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @Slf4j
