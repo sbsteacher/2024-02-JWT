@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 public enum UserRole {
-      ROLE_ADMIN
-    , ROLE_MENTOR
-    , ROLE_USER;
+      ADMIN
+    , MENTOR
+    , USER;
 }

@@ -61,7 +61,7 @@ public class JwtUser implements UserDetails  {
                     // .map(str -> new SimpleGrantedAuthority(str))와 같은 내용이다.
                     // .map(item -> { return new SimpleGrantedAuthority(item); }) //와 같은 내용이다.
                 //.map(fn2)
-                .map(item -> new SimpleGrantedAuthority(item.name())) //map은 똑같은 size의 스트림을 만든다. Stream<List<SimpleGrantedAuthority>>으로 변환,
+                .map(item -> new SimpleGrantedAuthority(String.format("ROLE_%s", item.name()))) //map은 똑같은 size의 스트림을 만든다. Stream<List<SimpleGrantedAuthority>>으로 변환,
                     .toList();
 
         //return roles.stream().map(SimpleGrantedAuthority::new).toList();

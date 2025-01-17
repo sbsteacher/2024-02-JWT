@@ -28,7 +28,7 @@ class JwtApplicationTests {
 
     @Test
     void enums() throws JsonProcessingException {
-        List<UserRole> roles = Arrays.asList(UserRole.ROLE_ADMIN, UserRole.ROLE_USER);
+        List<UserRole> roles = Arrays.asList(UserRole.ADMIN, UserRole.USER);
 
         String json = objectMapper.writeValueAsString(roles);
         System.out.println(json);
@@ -36,7 +36,7 @@ class JwtApplicationTests {
 
     @Test
     void enums2() throws JsonProcessingException {
-        List<UserRole> roles = Arrays.asList(UserRole.ROLE_ADMIN, UserRole.ROLE_USER);
+        List<UserRole> roles = Arrays.asList(UserRole.ADMIN, UserRole.USER);
         JwtUser jwtUser = new JwtUser(1, roles);
 
         String json = objectMapper.writeValueAsString(jwtUser);

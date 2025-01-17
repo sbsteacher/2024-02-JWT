@@ -1,5 +1,6 @@
 package com.green.jwt.config.security;
 
+import com.green.jwt.config.jwt.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,9 +30,9 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable()) //SSR(Server Side Rendering)이 아니다. 보안관련 SSR 이 아니면 보안이슈가 없기 때문에 기능을 끈다.
                 .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(req ->
-                                req.requestMatchers("/api/admin").hasRole("ADMIN")
-                                   .requestMatchers("/api/mentor").hasRole("MENTOR")
-                                   .requestMatchers("/api/admin-mentor").hasAnyRole("ADMIN", "MENTOR")
+                                req.requestMatchers("/api/admin").hasRole(UserRole.ADMIN.name())
+                                   .requestMatchers("/api/mentor").hasRole(UserRole.MENTOR.name())
+                                   .requestMatchers("/api/admin-mentor").hasAnyRole(UserRole.ADMIN.name(), UserRole.MENTOR.name())
                                    .requestMatchers("/api/admin", "/api/mentor", "/api/admin-mentor", "/api/user").authenticated()
 
                                    .anyRequest().permitAll()
