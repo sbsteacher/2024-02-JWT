@@ -77,8 +77,6 @@ public class JwtTokenProvider {
         //return bearerToken.substring(jwtConst.getTokenType().length()).trim();
     }
 
-
-
     private Claims getClaims(String token) {
         return Jwts.parser()
                    .verifyWith(secretKey)

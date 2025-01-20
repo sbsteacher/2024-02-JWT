@@ -27,7 +27,7 @@ class MyFunction implements Function<String, SimpleGrantedAuthority> {
 @Getter
 @EqualsAndHashCode//equals, hashCode 메소드 오버라이딩 > Test 용도
 @RequiredArgsConstructor
-public class JwtUser implements UserDetails  {
+public class JwtUser {
     private final long signedUserId;
     private final List<UserRole> roles; //인가(권한)처리 때 사용, ROLE_이름, ROLE_USER, ROLE_ADMIN
 
@@ -65,43 +65,5 @@ public class JwtUser implements UserDetails  {
                     .toList();
 
         //return roles.stream().map(SimpleGrantedAuthority::new).toList();
-    }
-
-
-
-    @JsonIgnore
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @JsonIgnore
-    @Override
-    public String getUsername() {
-        return "";
-    }
-
-    @JsonIgnore
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @JsonIgnore
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @JsonIgnore
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @JsonIgnore
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
     }
 }

@@ -3,7 +3,6 @@ constant:
     title: JWT Practice
     description: JWT + Security 고도화
     version: v0.1
-
   jwt-const:
     issuer: green@green.kr #토큰 발행자
     secret: DaeguGreenArtAcademyClass502RoomForJavaSpringBootFighting

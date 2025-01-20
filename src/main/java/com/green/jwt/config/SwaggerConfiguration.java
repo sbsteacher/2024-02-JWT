@@ -2,8 +2,6 @@ package com.green.jwt.config;
 
 import com.green.jwt.config.constant.InfoConst;
 import com.green.jwt.config.constant.JwtConst;
-
-
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -32,7 +30,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class SwaggerConfiguration {
-
     private final InfoConst infoConst;
     private final JwtConst jwtConst;
 
@@ -41,19 +38,17 @@ public class SwaggerConfiguration {
         SecurityRequirement securityRequirement = new SecurityRequirement().addList(jwtConst.getHeaderKey());
 
         SecurityScheme securityScheme = new SecurityScheme().type(SecurityScheme.Type.HTTP)
-                                                    .in(SecurityScheme.In.HEADER)
-                                                    .name(jwtConst.getHeaderKey())
-                                                    .scheme(jwtConst.getScheme())
-                                                    .bearerFormat(jwtConst.getBearerFormat());
+                                                            .in(SecurityScheme.In.HEADER)
+                                                            .name(jwtConst.getHeaderKey())
+                                                            .scheme(jwtConst.getScheme())
+                                                            .bearerFormat(jwtConst.getBearerFormat());
 
         return new OpenAPI().components(
-                            new Components().addSecuritySchemes(jwtConst.getHeaderKey(), securityScheme))
-                                            .addSecurityItem(securityRequirement)
-                                            .info(new Info().title(infoConst.getTitle())
-                                            .description(infoConst.getDescription())
-                                            .version(infoConst.getVersion())
+                    new Components().addSecuritySchemes(jwtConst.getHeaderKey(), securityScheme))
+                                    .addSecurityItem(securityRequirement)
+                                    .info(new Info().title(infoConst.getTitle())
+                                    .description(infoConst.getDescription())
+                                    .version(infoConst.getVersion())
                );
     }
-
-
 }
