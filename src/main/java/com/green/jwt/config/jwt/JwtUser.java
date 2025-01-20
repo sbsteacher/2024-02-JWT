@@ -104,6 +104,4 @@ public class JwtUser implements UserDetails  {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
-
-
 }
