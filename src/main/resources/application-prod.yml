@@ -4,6 +4,7 @@ constant:
 
 spring:
   datasource:
-    url: jdbc:log4jdbc:mariadb://localhost/jwt
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost/jwt
     username: root
     password: green502

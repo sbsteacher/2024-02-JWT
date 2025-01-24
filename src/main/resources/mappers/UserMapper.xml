@@ -24,12 +24,12 @@
         <result property="email" column="email" />
         <result property="pw" column="pw" />
         <result property="name" column="name" />
-        <collection property="roles" resultMap="selRolesResultMap" />
+        <collection property="roles" ofType="com.green.jwt.config.jwt.UserRole">
+            <id property="role" column="role" />
+        </collection>
     </resultMap>
 
-    <resultMap id="selRolesResultMap" type="com.green.jwt.config.jwt.UserRole">
-        <id property="role" column="role" />
-    </resultMap>
+
 
     <select id="selUserWithRoles" resultMap="selUserWithRolesResultMap">
         SELECT A.id, A.email, A.pw, A.name, B.role
